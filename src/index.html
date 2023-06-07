@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>KierDanielTavas</title>
+    <link href="../dist/output.css" rel="stylesheet" />
+  </head>
+  <body>
+    <!-- Your task is to make this website responsive from large screen to mobile screens using tailwind CSS NO custom media queries -->
+    <header>
+      <nav class="w-full bg-green-600 flex flex-wrap items-center justify-between h-16 px-3 md:px-10">
+        <div class="flex items-center justify-between w-full md:w-auto">
+          <!-- change the brand name to your name -->
+          <a href="#" class="text-slate-50 text-2xl font-semibold flex items-center pr-9">KierDanielTavas</a>
+          <div class="hidden md:flex items-center space-x-1">
+          <ul class="flex items center gap-4">
+            <li
+              class="text-slate-50 text-base font-medium hover:text-neutral-700 hover:duration-300"
+            >
+              <a href="#">Home</a>
+            </li>
+            <div>
+            <li
+              class="text-slate-50 text-base flex gap-2 items-center hover:text-neutral-700 hover:duration-300"
+            >
+            <button id="dropdown-button">
+              <a href="#">Shop</a>
+            </button>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 20 20"
+                stroke-width="2"
+                stroke="currentColor"
+                class="w-3.5 h-3.5"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M19.5 8.25l-7.5 7.5-7.5-7.5"
+                />
+              </svg>
+              <div id="dropdown-menu" class="absolute right-0 mt-2 py-2 w-48 bg-white rounded-lg shadow-xl hidden z-10">
+                <!-- Dropdown menu content -->
+                <a href="#" class="block px-4 py-2 text-gray-800 hover:bg-gray-100">Prices</a>
+                <a href="#" class="block px-4 py-2 text-gray-800 hover:bg-gray-100">Full Menu</a>
+                <a href="#" class="block px-4 py-2 text-gray-800 hover:bg-gray-100">Drinks</a>
+              </div>
+            </div>
+
+            <script>
+              const dropdownButton = document.getElementById('dropdown-button');
+              const dropdownMenu = document.getElementById('dropdown-menu');
+            
+              dropdownButton.addEventListener('click', () => {
+                dropdownMenu.classList.toggle('hidden');
+              });
+            
+              document.addEventListener('click', (event) => {
+                const targetElement = event.target;
+                if (!targetElement.closest('#dropdown-menu') && !targetElement.closest('#dropdown-button')) {
+                  dropdownMenu.classList.add('hidden');
+                }
+              });
+            
+              function positionDropdownMenu() {
+                const buttonRect = dropdownButton.getBoundingClientRect();
+                dropdownMenu.style.top = `${buttonRect.bottom}px`;
+                dropdownMenu.style.left = `${buttonRect.left}px`;
+                dropdownMenu.classList.remove('hidden');
+              }
+            
+              window.addEventListener('resize', positionDropdownMenu);
+              positionDropdownMenu();
+            </script>
+            
+            </li>
+            <li
+              class="text-slate-50 text-base font-medium hover:text-neutral-700 hover:duration-300"
+            >
+              <a href="#">About</a>
+            </li>
+            <li
+              class="text-slate-50 text-base font-medium hover:text-neutral-700 hover:duration-300"
+            >
+              <a href="#">Blog</a>
+            </li>
+            <li
+              class="text-slate-50 text-base font-medium hover:text-neutral-700 hover:duration-300"
+            >
+              <a href="#">Contact</a>
+            </li>
+            <li
+              class="text-slate-50 text-base font-medium hover:text-neutral-700 hover:duration-300"
+            >
+              <a href="#">Pages</a>
+            </li>
+          </ul>
+          </div>
+        </div>
+        <div class="flex gap-1 items-center ml-auto hidden md:flex items-center space-x-3 ">
+          <a
+            href="#"
+            class="text-slate-50 text-base font-medium hover:text-neutral-700 hover:duration-300"
+            >Login</a>
+          <span class="text-slate-50">&#47;</span>
+          <a
+            href="#"
+            class="text-slate-50 text-base font-medium hover:text-neutral-700 hover:duration-300"
+            >Register
+          </a>
+        </div>
+        <!-- Mobile menu button -->
+        <div class="md:hidden flex items-center">
+          <button class="outline-none mobile-menu-button">
+          <svg class=" w-6 h-6 text-gray-500 hover:text-green-500 "
+              x-show="!showMenu"
+              fill="none"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+          >
+              <path d="M4 6h16M4 12h16M4 18h16"></path>
+          </svg>
+      </button>
+      </div>
+  </div>
+</div>
+<!-- mobile menu -->
+<div class="hidden mobile-menu">
+  <ul class="">
+      <li class="active"><a href="index.html" class="block text-sm px-2 py-4 text-white bg-green-500 font-semibold">Home</a></li>
+      <li><a href="#services" class="block text-sm px-2 py-4 hover:bg-green-500 transition duration-300">Shop</a></li>
+      <li><a href="#about" class="block text-sm px-2 py-4 hover:bg-green-500 transition duration-300">About</a></li>
+      <li><a href="#contact" class="block text-sm px-2 py-4 hover:bg-green-500 transition duration-300">Blog</a></li>
+      <li><a href="#contact" class="block text-sm px-2 py-4 hover:bg-green-500 transition duration-300">Contact</a></li>
+      <li><a href="#contact" class="block text-sm px-2 py-4 hover:bg-green-500 transition duration-300">Pages</a></li>
+      <li><a href="#contact" class="block text-sm px-2 py-4 hover:bg-green-500 transition duration-300">Login/Register</a></li>
+    </ul>
+  </ul>
+</div>
+<script>
+  const btn = document.querySelector("button.mobile-menu-button");
+  const menu = document.querySelector(".mobile-menu");
+
+  btn.addEventListener("click", () => {
+      menu.classList.toggle("hidden");
+  });
+</script>
+      </nav>
+    </header>
+
+    <main>   
+      <!-- you can use different images if you want to -->
+      <section class="section_images py-16">
+        <!-- i manipulated the grid-cols to set the first column to have to occupy 70% of its width (not the parent) 
+          while the other column will occupy what ever is left to occupy (130% of its self [the 30 added coz the other shrunk]) -->
+        <div
+          class="grid max-w-5xl mx-auto grid-cols-[0.7fr_minmax(0px,1fr)] gap-3"
+        >
+          <div class="relative">
+            <img
+              src="./assets/images/furniture-1.jpg"
+              alt="Furniture Image"
+              class="w-full object-cover"
+            />
+            <!-- notice how i use semantic HTML in this div content -->
+            <div class="absolute top-7 left-7 flex flex-col gap-3">
+              <!-- I mostly use span for 1-5 words or a short sentence or subheading instead of <p>[since this is for long texts] -->
+              <span class="text-sm font-bold text-green-500">5 items</span>
+              <!-- This is a title so I have to use h2 [use heading tags for titles, h1-h6] -->
+              <h2 class="uppercase text-3xl font-bold text-neutral-800">
+                Furniture
+              </h2>
+              <a
+                href="#"
+                class="text-sm hover:underline underline-offset-4 font-bold text-neutral-800"
+                >Read More</a
+              >
+            </div>
+          </div>
+          <div class="flex flex-col gap-3">
+            <div class="relative">
+              <img
+                src="./assets/images/furniture-2.jpg"
+                alt="Furniture Image"
+                class="w-full h-full object-cover"
+              />
+              <div class="absolute top-7 left-7 flex flex-col gap-3">
+                <span class="text-sm font-bold text-green-500">5 items</span>
+                <h2 class="uppercase text-3xl font-bold text-neutral-800">
+                  Furniture
+                </h2>
+                <a
+                  href="#"
+                  class="text-sm hover:underline underline-offset-4 font-bold text-neutral-800"
+                  >Read More</a
+                >
+              </div>
+            </div>
+  
+            <!-- I set a 100% height here [h-full] because the images weren't occupying the whole box as i expected it to do even if they have 100% height
+            i noticed that this grid container is part of the flex-box container and that's what was causing the problem, so i had to set this grid 
+            container to 100% height so that the images will inherit the height of this grid container. 
+            ( you can test that by removing the h-full or maybe changing the height to whatever you want such as h-[400px] 
+              but the image will not go lower than its ACTUAL height even if you lower it to 10px)
+  
+            if you want me to explain more about inheritance among parent and children elements then you can 
+            just ping me in discord or any topics that you want me to explain :D
+            -->
+            <div class="grid grid-cols-2 gap-3 h-full">
+              <div class="relative">
+                <img
+                  src="./assets/images/furniture-3.jpg"
+                  alt="Furniture Image"
+                  class="w-full h-full object-cover"
+                />
+                <div class="absolute top-7 left-7 flex flex-col gap-3">
+                  <span class="text-sm font-bold text-green-500">5 items</span>
+                  <h2 class="uppercase text-2xl font-bold text-neutral-800">
+                    Furniture
+                  </h2>
+                  <a
+                    href="#"
+                    class="text-sm hover:underline underline-offset-4 font-bold text-neutral-800"
+                    >Read More</a
+                  >
+                </div>
+              </div>
+              <div class="relative">
+                <img
+                  src="./assets/images/furniture-4.jpg"
+                  alt="Furniture Image"
+                  class="w-full h-full object-cover"
+                />
+                <div class="absolute top-7 left-7 flex flex-col gap-3">
+                  <span class="text-sm font-bold text-green-500">5 items</span>
+                  <h2 class="uppercase text-2xl font-bold text-neutral-800">
+                    Furniture
+                  </h2>
+                  <a
+                    href="#"
+                    class="text-sm hover:underline underline-offset-4 font-bold text-neutral-800"
+                    >Read More</a
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>
